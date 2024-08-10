@@ -36,3 +36,5 @@ Verify EULA acceptance:
 ```sh
 cat /opt/minecraft/eula.txt
 ```
+
+A basic `server.properites` is written out by the cloud-init configuration; this includes a setting that enables the whitelist, which is initially empty. To add a player to the whitelist, edit the file at `/opt/minecraft/whitelist.json`; see https://minecraft.wiki/w/Whitelist.json for more details.

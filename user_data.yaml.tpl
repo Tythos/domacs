@@ -13,6 +13,20 @@ write_files:
       #!/bin/bash
       cd /opt/minecraft
       java -Xmx1024M -Xms1024M -jar minecraft_server.1.21.1.jar --nogui 
+  - path: /opt/minecraft/server.properties
+    permission: '0755'
+    content: |
+      difficulty=normal
+      white-list=true
+  - path: /opt/minecraft/whitelist.json
+    permissions: '0755'
+    content: |
+      [
+        {
+          "uuid": "${ADMIN_UUID}",
+          "name": "${ADMIN_USER}"
+        }
+      ]
 
 runcmd:
   - mkdir -o /opt/minecraft

@@ -4,5 +4,5 @@ resource "digitalocean_droplet" "dodroplet" {
   region    = "sfo3"
   size      = "s-4vcpu-8gb"
   ssh_keys  = [digitalocean_ssh_key.dosshkey.id]
-  user_data = file("user_data.yaml")
+  user_data = data.template_file.user_data_yaml.rendered
 }
