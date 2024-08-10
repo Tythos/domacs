@@ -1,0 +1,24 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+packages:
+  - openjdk-21-jre-headless
+  - screen
+
+write_files:
+  - path: /opt/minecraft/start_minecraft.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      cd /opt/minecraft
+      java -Xmx1024M -Xms1024M -jar minecraft_server.1.21.1.jar --nogui 
+
+runcmd:
+  - mkdir -o /opt/minecraft
+  - cd /opt/minecraft
+  - wget -O minecraft_server.1.21.1.jar https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar
+  - echo "eula=true" > /opt/minecraft/eula.txt
+  - bash /opt/minecraft/start_minecraft.sh
+
+final_message: "Minecraft server setup complete!"
