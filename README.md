@@ -22,14 +22,16 @@ Please note that the domain name you use (see the Terraform variable `DOMAIN_NAM
 
 ### Verification and Debugging
 
-SSH into VM:
+There are several points during deployment you can inspect to verify and debug the process:
+
+*SSH into VM:*
 
 ```sh
 terraform output -raw PRIVATE_SSH_KEY > id_rsa
 ssh -i id_rsa root@$(terraform output VM_IP_ADDR)
 ```
 
-Check cloud-init logs:
+*Check cloud-init logs:*
 
 ```sh
 tail -f /var/log/cloud-init.log
@@ -38,21 +40,23 @@ tail -f /var/log/cloud-init-output.log
 
 (The second command is probably the most useful one to follow on this whole page when tracking to see if the server has started and what server events have taken place.)
 
-Verify the Minecraft process is running:
+*Verify the Minecraft process is running:*
 
 ```sh
 screen -ls
 ps aux | grep java
 ```
 
-Check Minecraft server logs (adjust for mount path if volume changes):
+*Check Minecraft server logs:*
+
+(adjust for mount path if volume changes)
 
 ```sh
 export PERSISTENT_VOLUME_PATH=/mnt/dovolume/minecraft
 tail -f $PERSISTENT_VOLUME_PATH/logs/latest.log
 ```
 
-Verify EULA acceptance:
+*Verify EULA acceptance:*
 
 ```sh
 cat $PERSISTENT_VOLUME_PATH/eula.txt
