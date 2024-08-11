@@ -2,6 +2,24 @@
 
 ## The DigitalOcean Minecraft Automated Compute Server
 
+### Deployment
+
+Provide values for the Terraform variables by either defining a `terraform.tfvars` file (which will be excluded from version control via `.gitignore`), or by defining environmental variables with the `TF_VAR_` prefix.
+
+Once these variables are defined, deployment is a simple Terraform three-step:
+
+```sh
+terraform init
+terraform plan
+terraform apply
+```
+
+Please note that the domain name you use (see the Terraform variable `DOMAIN_NAME`) should be:
+
+1. Registered by you with a known domain registrar
+
+1. Pointing to DigitalOcean nameservers (e.g., `NS` records)
+
 ### Verification and Debugging
 
 SSH into VM:
