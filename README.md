@@ -68,7 +68,7 @@ A basic `server.properites` is written out by the cloud-init configuration; this
 
 Inputs are defined in `terraform.tfvars` (which is gitignore'd) and are documented by the specifications in `variables.tf`.
 
-The `ADMIN_USER` and `ADMIN_UUID` defines a specific "operators" account that can connect before the full whitelist is configured. To add additional users without restarting the VM, you can use the in-game `/whitelist add [username]` command directly or adjust the contents of the :
+The `ADMIN_USER` and `ADMIN_UUID` defines a specific "operators" account that can connect before the full whitelist is configured. To add additional users without restarting the VM, you can use the in-game `/whitelist add [username]` command directly or adjust the contents of the `whitelist.json` file (see https://minecraft.fandom.com/wiki/Whitelist.json for details):
 
 1. Look up their UUID (see https://mcuuid.net for details); note that XBox-only (e.g., Minecraft for Windows and / or kids in family account) profiles will *NOT* have a Minecraft name (just a "Gamer Tag") and therefore *CANNOT* be whitelisted
 
