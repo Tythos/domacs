@@ -7,32 +7,33 @@ packages:
   - screen
 
 write_files:
-  - path: /opt/minecraft/start_minecraft.sh
+  - path: ${PERSISTENT_VOLUME_PATH}/start_minecraft.sh
     permissions: '0755'
     content: |
       #!/bin/bash
-      cd /opt/minecraft
+      cd ${PERSISTENT_VOLUME_PATH}
       java -Xmx1024M -Xms1024M -jar minecraft_server.1.21.1.jar --nogui 
-  - path: /opt/minecraft/server.properties
+  - path: ${PERSISTENT_VOLUME_PATH}/server.properties
     permission: '0755'
     content: |
       difficulty=normal
       white-list=true
-  - path: /opt/minecraft/whitelist.json
-    permissions: '0755'
+  - path: ${PERSISTENT_VOLUME_PATH}/ops.json
+    permission: '0755'
     content: |
       [
         {
           "uuid": "${ADMIN_UUID}",
-          "name": "${ADMIN_USER}"
+          "name": "${ADMIN_USER}",
+          "level": 4
         }
       ]
 
 runcmd:
-  - mkdir -o /opt/minecraft
-  - cd /opt/minecraft
+  - mkdir -o ${PERSISTENT_VOLUME_PATH}
+  - cd ${PERSISTENT_VOLUME_PATH}
   - wget -O minecraft_server.1.21.1.jar https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar
-  - echo "eula=true" > /opt/minecraft/eula.txt
-  - bash /opt/minecraft/start_minecraft.sh
+  - echo "eula=true" > ${PERSISTENT_VOLUME_PATH}/eula.txt
+  - bash ${PERSISTENT_VOLUME_PATH}/start_minecraft.sh
 
 final_message: "Minecraft server setup complete!"

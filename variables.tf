@@ -17,3 +17,8 @@ variable "ADMIN_UUID" {
   type        = string
   description = "UUID of user who will initially be able to connect to the server (see https://mcuuid.net for easy lookup)"
 }
+
+variable "DO_REGION" {
+  type        = string
+  description = "DigitalOcean region into which resources will be deployed"
+}
