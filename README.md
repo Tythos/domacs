@@ -18,6 +18,8 @@ tail -f /var/log/cloud-init.log
 tail -f /var/log/cloud-init-output.log
 ```
 
+(The second command is probably the most useful one to follow on this whole page when tracking to see if the server has started and what server events have taken place.)
+
 Verify the Minecraft process is running:
 
 ```sh
