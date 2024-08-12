@@ -2,6 +2,14 @@
 
 ## The DigitalOcean Minecraft Automated Compute Server
 
+### Background
+
+This is a collection of Terraform resources that can facilitate an automated deployment of a Minecraft server using DigitalOcean.
+
+The server will be exposed with a specific domain you specify in the Terraform variables, along with other inputs.
+
+You can also customize the server properties by modifying the relevant block of the `user_data.yaml.tpl` file but be aware this may cause the VM to reboot; adjusting in-place may be preferable and will persist because these resources include a cloud volume mounted against the Minecraft data path.
+
 ### Deployment
 
 Provide values for the Terraform variables by either defining a `terraform.tfvars` file (which will be excluded from version control via `.gitignore`), or by defining environmental variables with the `TF_VAR_` prefix.
@@ -85,3 +93,7 @@ The `ADMIN_USER` and `ADMIN_UUID` defines a specific "operators" account that ca
 - [x] The server world is currently only persistent for the lifetime of the VM; the server program itself can be restarted but if the VM is shut down (as Terraforom will do automatically if the configuration changes, including cloud-init content), the world will be lost; persistent could be added by mounting in a defined storage volume
 
 - [ ] Right now the droplet runs under root; we should update the cloud-init configuration to disable root access or at least launch the server under a user profile with restricted privileges
+
+- [ ] Outline and document via new software engineering episode?
+
+- [ ] Extract server properties to its own template file?
