@@ -51,8 +51,8 @@ write_files:
     content: |
       #!/bin/bash
       cd ${PERSISTENT_VOLUME_PATH}
-      wget -O minecraft_server.1.21.3.jar https://piston-data.mojang.com/v1/objects/45810d238246d90e811d896f87b14695b7fb6839/server.jar
-      java -Xmx1024M -Xms1024M -jar minecraft_server.1.21.3.jar --nogui
+      wget -O minecraft_server.1.21.4.jar https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar
+      java -Xmx1024M -Xms1024M -jar minecraft_server.1.21.4.jar --nogui
 
 runcmd:
   - ls -ahl /root

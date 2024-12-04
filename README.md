@@ -308,3 +308,15 @@ You should make sure your `.gitignore` file is fully populated before you commit
 ![we're in!](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v2ukzfe6db6ih8qbck54.png)
 
 Spinning up a Minecraft server is a great exercise for learning key cloud technologies. Hopefully you've seen how effective combinations of these technologies (like DigitalOcean, Terraform, and cloud-init) can be used to simplify, automate, and proceduralize how your infrastructure is deployed and orchestrated.
+
+## TODO (since article)
+
+- [x] Pull server properties, ops, and whitelist content into YAML template
+
+- [x] Update release to v1.21.3
+
+- [x] Fix bug with persistent volume mounting
+
+- [x] Update release to v1.21.4
+
+- [ ] Demonstrate multiple worlds and/or mods? (![https://www.curseforge.com/minecraft/mc-mods/serene-seasons](Serene Seasons) seems to be a good candidate)
