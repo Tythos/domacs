@@ -17,8 +17,12 @@ write_files:
   - path: /root/server.properties
     permissions: '0755'
     content: |
+      gamemode=survival
       difficulty=normal
       white-list=true
+      enable-command-block=false
+      max-players=20
+
   - path: /root/ops.json
     permissions: '0755'
     content: |
@@ -51,8 +55,29 @@ write_files:
     content: |
       #!/bin/bash
       cd ${PERSISTENT_VOLUME_PATH}
-      wget -O minecraft_server.1.21.4.jar https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar
+      curl https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar -o minecraft_server.1.21.4.jar
+      #curl https://meta.fabricmc.net/v2/versions/loader/1.21.4/0.16.9/1.0.1/server/jar -o fabric-server-mc.1.21.4-loader.0.16.9-launcher.1.0.1.jar
+      #curl https://mediafilez.forgecdn.net/files/5966/280/fabric-api-0.111.0%2B1.21.4.jar -o mods/fabric-api-0.111.0+1.21.4.jar
+      #curl https://mediafilez.forgecdn.net/files/5876/845/geckolib-fabric-1.21.3-4.7.1.jar -o mods/geckolib-fabric-1.21.3-4.7.1.jar
+      #curl https://mediafilez.forgecdn.net/files/5512/147/duckling-fabric-1.21-5.0.1.jar -o mods/duckling-fabric-1.21-5.0.1.jar
+      #curl https://mediafilez.forgecdn.net/files/5969/929/GlitchCore-fabric-1.21.4-2.3.0.0.jar -o mods/GlitchCore-fabric-1.21.4-2.3.0.0.jar
+      #curl https://mediafilez.forgecdn.net/files/5861/336/SereneSeasons-fabric-1.21.3-10.2.0.1.jar -o mods/SereneSeasons-fabric-1.21.3-10.2.0.1.jar
       java -Xmx1024M -Xms1024M -jar minecraft_server.1.21.4.jar --nogui
+      #java -Xmx2G -jar fabric-server-mc.1.21.4-loader.0.16.9-launcher.1.0.1.jar nogui
+  - path: /etc/systemd/system/minecraft.service
+    content: |
+      [Unit]
+      Description=Minecraft Server
+      After=network.target
+      
+      [Service]
+      ExecStart=/root/start_minecraft_server.sh
+      User=root
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+
 
 runcmd:
   - ls -ahl /root
@@ -62,6 +87,7 @@ runcmd:
   - cp -n /root/ops.json ${PERSISTENT_VOLUME_PATH}/ops.json
   - cp -n /root/whitelist.json ${PERSISTENT_VOLUME_PATH}/whitelist.json
   - cp -n /root/eula.txt ${PERSISTENT_VOLUME_PATH}/eula.txt
-  - /root/start_minecraft_server.sh
+  - systemctl enable minecraft.service
+  - systemctl start minecraft.service
 
 final_message: "Minecraft server setup complete!"
