@@ -7,6 +7,7 @@ resource "digitalocean_project" "doproject" {
   resources = [
     digitalocean_droplet.dodroplet.urn,
     digitalocean_domain.dodomain.urn,
-    digitalocean_volume.dovolume.urn
+    digitalocean_volume.dovolume.urn,
+    digitalocean_domain.dodomain.urn
   ]
 }
