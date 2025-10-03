@@ -320,3 +320,6 @@ Spinning up a Minecraft server is a great exercise for learning key cloud techno
 - [x] Update release to v1.21.4
 
 - [ ] Demonstrate multiple worlds and/or mods? (![https://www.curseforge.com/minecraft/mc-mods/serene-seasons](Serene Seasons) seems to be a good candidate)
+
+- [ ] Deconflict DO vs CF domain record management
+
