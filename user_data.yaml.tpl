@@ -44,6 +44,10 @@ write_files:
         {
             "uuid": "5a18fba5-3949-4942-a94d-882f3204edbc",
             "name": "NdersGame"
+        },
+        {
+          "uuid": "f31600b8-4f10-4fc4-a845-853ddfbac12a",
+          "name": "FUSAGFROBro"
         }
       ]
   - path: /root/eula.txt
@@ -55,7 +59,8 @@ write_files:
     content: |
       #!/bin/bash
       cd ${PERSISTENT_VOLUME_PATH}
-      curl https://piston-data.mojang.com/v1/objects/05e4b48fbc01f0385adb74bcff9751d34552486c/server.jar -o minecraft_server.1.21.7.jar
+      curl https://piston-data.mojang.com/v1/objects/11e54c2081420a4d49db3007e66c80a22579ff2a/server.jar -o minecraft-server.1.21.9.jar
+      #curl https://piston-data.mojang.com/v1/objects/05e4b48fbc01f0385adb74bcff9751d34552486c/server.jar -o minecraft_server.1.21.7.jar
       #curl https://piston-data.mojang.com/v1/objects/6e64dcabba3c01a7271b4fa6bd898483b794c59b/server.jar -o minecraft_server.1.21.6.jar
       #curl https://meta.fabricmc.net/v2/versions/loader/1.21.4/0.16.9/1.0.1/server/jar -o fabric-server-mc.1.21.4-loader.0.16.9-launcher.1.0.1.jar
       #curl https://mediafilez.forgecdn.net/files/5966/280/fabric-api-0.111.0%2B1.21.4.jar -o mods/fabric-api-0.111.0+1.21.4.jar
@@ -63,7 +68,7 @@ write_files:
       #curl https://mediafilez.forgecdn.net/files/5512/147/duckling-fabric-1.21-5.0.1.jar -o mods/duckling-fabric-1.21-5.0.1.jar
       #curl https://mediafilez.forgecdn.net/files/5969/929/GlitchCore-fabric-1.21.4-2.3.0.0.jar -o mods/GlitchCore-fabric-1.21.4-2.3.0.0.jar
       #curl https://mediafilez.forgecdn.net/files/5861/336/SereneSeasons-fabric-1.21.3-10.2.0.1.jar -o mods/SereneSeasons-fabric-1.21.3-10.2.0.1.jar
-      java -Xmx1024M -Xms1024M -jar minecraft_server.1.21.7.jar --nogui
+      java -Xmx1024M -Xms1024M -jar minecraft_server.1.21.9.jar --nogui
       #java -Xmx2G -jar fabric-server-mc.1.21.4-loader.0.16.9-launcher.1.0.1.jar nogui
   - path: /etc/systemd/system/minecraft.service
     content: |
