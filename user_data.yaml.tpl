@@ -59,7 +59,7 @@ write_files:
     content: |
       #!/bin/bash
       cd ${PERSISTENT_VOLUME_PATH}
-      curl https://piston-data.mojang.com/v1/objects/11e54c2081420a4d49db3007e66c80a22579ff2a/server.jar -o minecraft-server.1.21.9.jar
+      curl https://piston-data.mojang.com/v1/objects/11e54c2081420a4d49db3007e66c80a22579ff2a/server.jar -o minecraft_server.1.21.9.jar
       #curl https://piston-data.mojang.com/v1/objects/05e4b48fbc01f0385adb74bcff9751d34552486c/server.jar -o minecraft_server.1.21.7.jar
       #curl https://piston-data.mojang.com/v1/objects/6e64dcabba3c01a7271b4fa6bd898483b794c59b/server.jar -o minecraft_server.1.21.6.jar
       #curl https://meta.fabricmc.net/v2/versions/loader/1.21.4/0.16.9/1.0.1/server/jar -o fabric-server-mc.1.21.4-loader.0.16.9-launcher.1.0.1.jar
